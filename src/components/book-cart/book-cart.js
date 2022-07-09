@@ -4,7 +4,7 @@ const BookCart = (props) => {
   const { id, title, price, quantity, rest } = props.book
 
   return (
-    <tr key={id}>
+    <tr >
       <td>{props.i + 1} </td>
       <td>{title} </td>
       <td>{price} </td>

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { v4 } from 'uuid'
 
 import booksStub from '../../data/books-data'
 import BookCart from '../book-cart/book-cart'
@@ -35,7 +34,7 @@ const Basket = () => {
             <BookCart
               book={book}
               i={index}
-              key={v4()}
+              key={book.id}
               setQuatinty={setQuatinty}
               deleteBook={deleteBook}
             />
