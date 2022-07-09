@@ -1,16 +1,15 @@
-import useInput from '../hook'
 import Error from '../error/error'
+import getInput from './hooks/getInput'
 
 const LoginPass = () => {
-  const email = useInput('', { error: 'Введите email' })
-  const password = useInput('', { error: 'Введите пароль' })
-
+  const email = getInput('', { isEmpty: true, isValidEmail: true })
+  const password = getInput('', { isEmpty: true, isLength: 4 })
 
   return (
     <div>
       <form>
         <h1>Войдите в личный кабинет</h1>
-        <Error dirty={email.dirty} error={email.error} />
+        <Error dirty={email.dirty} error={email.valid} />
         <input
           name="email"
           type="text"
@@ -19,7 +18,7 @@ const LoginPass = () => {
           onChange={email.onChange}
           onBlur={email.onBlur}
         />
-        <Error dirty={password.dirty} error={password.error} />
+        <Error dirty={password.dirty} error={password.valid} />
         <input
           name="password"
           type="password"
