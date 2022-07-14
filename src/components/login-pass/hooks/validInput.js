@@ -9,32 +9,22 @@ const validInput = (initValue, rules, dirty) => {
   useEffect(() => {
     if (!dirty) return
 
-    const arrNameError = Object.keys(rules)
-
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < arrNameError.length; i++) {
-      if (!initValue && arrNameError[i] === 'isEmpty') {
-        setError('Поле не может быть пустым')
-        break
-      }
-
-      if (arrNameError[i] === 'isValidEmail' && !initValue.match(regEmail)) {
-        setError('Неккоректный email')
-        break
-      }
-
-      if (
-        arrNameError[i] === 'isLength' &&
-        initValue.length < rules[arrNameError[i]]
-      ) {
-        setError(
-          `Поле должно содержать более ${rules[arrNameError[i]]} символов`
-        )
-        break
-      }
-
-      setError('')
+    if (!initValue && rules.isEmpty) {
+      setError('Поле не может быть пустым')
+      return
     }
+
+    if (rules.isValidEmail && !initValue.match(regEmail)) {
+      setError('Неккоректный email')
+      return
+    }
+
+    if (rules.isLength && initValue.length < rules.isLength) {
+      setError(`Поле должно содержать более ${rules.isLength} символов`)
+      return
+    }
+
+    setError('')
   }, [initValue, dirty])
 
   return error
