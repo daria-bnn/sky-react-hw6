@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import CounterInput from './components/counter-input'
+import Basket from './components/basket/basket'
+import LoginPass from './components/login-pass/login-pass'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <App />
-    <CounterInput min={-10} max={30} />
+    <Basket />
+    <LoginPass />
   </React.StrictMode>
 )
